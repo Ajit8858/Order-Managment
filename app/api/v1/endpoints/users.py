@@ -24,6 +24,16 @@ async def update_my_profile(
         user.full_name = payload.full_name
     if payload.phone is not None:
         user.phone = payload.phone
+    if payload.address is not None:
+        user.address = payload.address
+    if payload.street is not None:
+        user.street = payload.street
+    if payload.city is not None:
+        user.city = payload.city
+    if payload.state is not None:
+        user.state = payload.state
+    if payload.zip_code is not None:
+        user.zip_code = payload.zip_code
     await db.commit()
     await db.refresh(user)
     return user

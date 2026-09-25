@@ -23,6 +23,7 @@ class ProductCreate(BaseModel):
     price: Decimal = Field(gt=0)
     stock: int = Field(ge=0)
     sku: str = Field(min_length=1, max_length=64)
+    image_url: Optional[str] = Field(default=None, max_length=1000)
     category_id: Optional[uuid.UUID] = None
 
 
@@ -32,6 +33,7 @@ class ProductUpdate(BaseModel):
     price: Optional[Decimal] = Field(default=None, gt=0)
     stock: Optional[int] = Field(default=None, ge=0)
     is_active: Optional[bool] = None
+    image_url: Optional[str] = Field(default=None, max_length=1000)
     category_id: Optional[uuid.UUID] = None
 
 
@@ -44,6 +46,7 @@ class ProductOut(BaseModel):
     price: Decimal
     stock: int
     sku: str
+    image_url: Optional[str]
     is_active: bool
     category_id: Optional[uuid.UUID]
     seller_id: Optional[uuid.UUID]

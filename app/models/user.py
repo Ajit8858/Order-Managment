@@ -1,4 +1,5 @@
 import enum
+import string
 import uuid
 from datetime import datetime
 
@@ -27,7 +28,11 @@ class User(Base):
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
-
+    address: Mapped[str] = mapped_column(String(255), nullable=True)
+    street: Mapped[str] = mapped_column(String(255), nullable=True)
+    city: Mapped[str] = mapped_column(String(255), nullable=True)
+    state: Mapped[str] = mapped_column(String(255), nullable=True)
+    zip_code: Mapped[str] = mapped_column(String(20), nullable=True)
     refresh_tokens: Mapped[list["RefreshToken"]] = relationship(back_populates="user", cascade="all, delete-orphan")
     cart: Mapped["Cart"] = relationship(back_populates="user", uselist=False, cascade="all, delete-orphan")
     orders: Mapped[list["Order"]] = relationship(back_populates="user")

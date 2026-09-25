@@ -26,6 +26,11 @@ class UserCreate(BaseModel):
 class UserUpdate(BaseModel):
     full_name: Optional[str] = None
     phone: Optional[str] = None
+    address: Optional[str] = None
+    street: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    zip_code: Optional[str] = None
 
 
 class UserOut(BaseModel):
@@ -35,6 +40,11 @@ class UserOut(BaseModel):
     email: EmailStr
     full_name: Optional[str]
     phone: Optional[str]
+    address: Optional[str]
+    street: Optional[str]
+    city: Optional[str]
+    state: Optional[str]
+    zip_code: Optional[str]
     role: UserRole
     is_active: bool
     created_at: datetime
